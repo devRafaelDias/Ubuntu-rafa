@@ -4,7 +4,7 @@ autoinstall:
   identity:
     realname: "Rafael Dias"
     hostname: "ubuntu-rafa"
-    username: "diolinux"
+    username: "rafa"
     password: "$y$j9T$t6a3EPv710DVQxKFoCkWQ.$832QdV7AGA1jQRNbvqHuiL8lCLsyFwV6pOML1RM5Tr4"
   locale: "pt_BR.UTF-8"
   keyboard:
@@ -23,6 +23,10 @@ autoinstall:
     - obs-studio
     - freecad
     - geogebra
+    - remmina
+    - htop
+    - flatpak             # Flatpak instalado direto pelo apt
+    - gnome-software-plugin-flatpak  # Integração do Flatpak na Loja de Aplicativos (opcional, bom para interface gráfica)
     - ubuntu-restricted-extras
   snaps:
     - name: spotify
@@ -34,7 +38,17 @@ autoinstall:
     - name: bitwarden
       channel: stable
       classic: false
+    - name: discord
+      channel: stable
+      classic: false
+    - name: telegram-desktop
+      channel: stable
+      classic: false
   late-commands:
+    # Configurar Flathub
+    - curt -sSf https://dl.flathub.org/repo/flathub.flatpakrepo -o /target/tmp/flathub.flatpakrepo
+    - chroot /target flatpak remote-add --if-not-exists flathub /tmp/flathub.flatpakrepo
+
     # Download e instalação manual do AnyType (AppImage mais recente)
     - curt -L -o /target/usr/local/bin/Anytype.AppImage https://download.anytype.io/Anytype-latest-x86_64.AppImage
     - chmod +x /target/usr/local/bin/Anytype.AppImage
