@@ -25,8 +25,9 @@ autoinstall:
     - geogebra
     - remmina
     - htop
-    - flatpak             # Flatpak instalado direto pelo apt
-    - gnome-software-plugin-flatpak  # Integração do Flatpak na Loja de Aplicativos (opcional, bom para interface gráfica)
+    - vlc                     # <- VLC adicionado aqui
+    - flatpak                 # Flatpak instalado direto pelo apt
+    - gnome-software-plugin-flatpak  # Integração do Flatpak na Loja de Aplicativos
     - ubuntu-restricted-extras
   snaps:
     - name: spotify
