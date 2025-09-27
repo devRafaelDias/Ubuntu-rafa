@@ -1,0 +1,41 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    realname: "Rafael Dias"
+    hostname: "ubuntu-rafa"
+    username: "diolinux"
+    password: "$y$j9T$t6a3EPv710DVQxKFoCkWQ.$832QdV7AGA1jQRNbvqHuiL8lCLsyFwV6pOML1RM5Tr4"
+  locale: "pt_BR.UTF-8"
+  keyboard:
+    layout: "br"
+  timezone: "America/Sao_Paulo"
+  updates: all
+  drivers:
+    install: true
+  packages:
+    - libreoffice
+    - gimp
+    - git
+    - wget
+    - kdenlive
+    - lmms
+    - obs-studio
+    - freecad
+    - geogebra
+    - ubuntu-restricted-extras
+  snaps:
+    - name: spotify
+      channel: stable
+      classic: false
+    - name: vivaldi
+      channel: stable
+      classic: false
+    - name: bitwarden
+      channel: stable
+      classic: false
+  late-commands:
+    # Download e instalação manual do AnyType (AppImage mais recente)
+    - curt -L -o /target/usr/local/bin/Anytype.AppImage https://download.anytype.io/Anytype-latest-x86_64.AppImage
+    - chmod +x /target/usr/local/bin/Anytype.AppImage
+  shutdown: reboot
